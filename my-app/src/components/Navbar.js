@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 export default function Navbar(props) {
@@ -19,21 +20,32 @@ export default function Navbar(props) {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li className="nav-item active">
-                        <a className="nav-link acive" aria-current="page" href="/">Home</a>
+                        <Link className="nav-link acive" aria-current="page" to="/">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/">About</a>
+                        <Link className="nav-link" to="/about">About</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/">Pricing</a>
+                        <Link className="nav-link" to="/pricing">Pricing</Link>
                     </li>
                 </ul>
-                <div className={`form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-                    <input className="form-check-input mx-0" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-                    <label className="form-check-label mx-2" htmlFor="flexSwitchCheckDefault">Dark Mode</label>
+                <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'dark' : 'light'} mx-2`}>
+                    <input className="form-check-input" onClick={props.toggleModeBlue} type="radio" id="DarkMode1" name="DarkMode" value="option1"/>
+                    <label className="form-check-label" htmlFor="DarkMode1">Blue Dark Mode</label>
+                </div>
+                <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'dark' : 'light'} mx-2`}>
+                    <input className="form-check-input " onClick={props.toggleModeGreen} type="radio" id="DarkMode2" name="DarkMode" value="option2"/>
+                    <label className="form-check-label" htmlFor="DarkMode2">Green Dark Mode</label>
+                </div>
+                <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'dark' : 'light'} mx-2`}>
+                    <input className="form-check-input" onClick={props.toggleModeRed} type="radio" id="DarkMode3" name="DarkMode" value="option3"/>
+                    <label className="form-check-label" htmlFor="DarkMode3">Red Dark Mode</label>
+                </div>
+                <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'dark' : 'light'} mx-2`}>
+                    <input className="form-check-input" onClick={props.toggleModeLight} type="radio" id="DarkMode4" name="DarkMode" value="option4" defaultChecked/>
+                    <label className="form-check-label" htmlFor="DarkMode4">Light Mode</label>
                 </div>
             </div>
         </nav>
     )
 }
-
