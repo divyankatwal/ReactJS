@@ -1,41 +1,60 @@
 import React from 'react'
 
-export default function prodcuts() {
-  return (
-    <div className="container my-4">
-      <div className="row featurette d-flex justify-content-center align-items-center">
-        <div className="col-md-7 order-md-2">
-          <h2 className="featurette-heading fw-normal lh-1">ComputerChacha, <span className="text-body-secondary">class in
-            itself.</span></h2>
-          <p className="lead">Wide range of budget friendly computer builds at one place.</p>
-        </div>
-        <div className="col-md-5 order-md-1">
-          <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="logo.png"
-            d-flex height="500px" width="500px" alt="" />
-        </div>
-      </div>
-      <div className="row featurette d-flex justify-content-center align-items-center">
-        <div className="col-md-4 order-md-1">
-          <h2 className="featurette-heading fw-normal lh-1">PC Builds <span className="text-body-secondary">For
-            everyone.</span></h2>
-          <p className="lead">Introducing new pc builds for everyone.</p>
-        </div>
-        <div className="col-md-5 order-md-2">
-          <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            src="posterinsta.jpg" d-flex height="500px" width="500px" alt="" />
-        </div>
-      </div>
-      <div className="row featurette d-flex justify-content-center align-items-center my-4">
-        <div className="col-md-7 order-md-2">
-          <h2 className="featurette-heading fw-normal lh-1">Trusted Owners <span className="text-body-secondary">and
-            reputed ones.</span></h2>
-          <p className="lead">We have collabs with big NGO's and have awards in our name.</p>
-        </div>
-        <div className="col-md-5 order-md-1">
-          <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-            src="pcwall.jpg" d-flex height="500px" width="500px" alt="" />
-        </div>
-      </div>
-    </div>
-  )
+function products() {
+    return (
+        <>
+            <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+                <div className="col-md-6 p-lg-5 mx-auto my-5">
+                    <h1 className="display-3 fw-bold">Designed for everyone</h1>
+                    <h3 className="fw-normal text-muted mb-3">Build anything you want with Aperture</h3>
+                    <div className="d-flex gap-3 justify-content-center lead fw-normal">
+                        <a className="icon-link" href="/">
+                            Learn more
+                            <svg className="bi"><use xlinkhref="#chevron-right"></use></svg>
+                        </a>
+                        <a className="icon-link" href="/">
+                            Buy
+                            <svg className="bi"><use xlinkhref="#chevron-right"></use></svg>
+                        </a>
+                    </div>
+                </div>
+                <div className="product-device shadow-sm d-none d-md-block"></div>
+                <div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+            </div>
+            <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+                <div className="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div className="my-3 py-3">
+                        <h2 className="display-5">Another headline</h2>
+                        <p className="lead">And an even wittier subheading.</p>
+                    </div>
+                    <div className="bg-body-tertiary shadow-sm mx-auto" style={{width: "100%", height: "300px", borderRadius: "21px 21px 0 0"}}></div>
+                </div>
+                <div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div className="my-3 p-3">
+                        <h2 className="display-5">Another headline</h2>
+                        <p className="lead">And an even wittier subheading.</p>
+                    </div>
+                    <div className="bg-dark shadow-sm mx-auto" style={{width: "100%" , height: "300px" , borderRadius: "21px 21px 0 0"}}></div>
+                </div>
+            </div>
+            <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+                <div className="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div className="my-3 py-3">
+                        <h2 className="display-5">Another headline</h2>
+                        <p className="lead">And an even wittier subheading.</p>
+                    </div>
+                    <div className="bg-body-tertiary shadow-sm mx-auto" style={{width: "100%", height: "300px", borderRadius: "21px 21px 0 0"}}></div>
+                </div>
+                <div className="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div className="my-3 p-3">
+                        <h2 className="display-5">Another headline</h2>
+                        <p className="lead">And an even wittier subheading.</p>
+                    </div>
+                    <div className="bg-dark shadow-sm mx-auto" style={{width: "100%" , height: "300px" , borderRadius: "21px 21px 0 0"}}></div>
+                </div>
+            </div>
+        </>
+    )
 }
+
+export default products

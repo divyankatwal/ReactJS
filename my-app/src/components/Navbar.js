@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Navbar(props) {
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
-            <a className="navbar-brand mx-2" href="/">{props.title}</a>
+            <Link className="navbar-brand mx-2" to="/">{props.title}</Link>
             <button
                 className="navbar-toggler"
                 type="button"
@@ -26,7 +26,7 @@ export default function Navbar(props) {
                         <Link className="nav-link" to="/about">About</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/pricing">Pricing</Link>
+                        <Link className="nav-link" to="/products">Products</Link>
                     </li>
                 </ul>
                 <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'dark' : 'light'} mx-2`}>
