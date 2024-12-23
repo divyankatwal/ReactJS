@@ -1,44 +1,73 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
 
 export class News extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            articles: [],
+            loading: false,
+            page: 1
+        }
+    }
+
+    async componentDidMount() {
+        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=836e4a7cf74641eabcc3ef74e7d481e6&page=1&pageSize=${this.props.pageSize}`;
+        this.setState({loading: true});
+        let data = await fetch(url);
+        let parsedData = await data.json()
+        this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            loading: false
+        })
+    }
+
+    handleNextClick = async () => {
+        if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))){
+            let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=836e4a7cf74641eabcc3ef74e7d481e6&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+            this.setState({loading:true});
+            let data = await fetch(url);
+            let parsedData = await data.json()
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsedData.articles,
+                loading: false
+            })
+        }
+    }
+
+    handlePrevClick = async () => {
+        let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=836e4a7cf74641eabcc3ef74e7d481e6&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+        this.setState({loading:true});
+        let data = await fetch(url);
+        let parsedData = await data.json()
+        this.setState({
+            page: this.state.page - 1,
+            articles: parsedData.articles,
+            loading: false
+        })
+    }
+
+
     render() {
         return (
             <div className="container my-3">
                 <h2>NewsFoxy - Top Headlines</h2>
+                {this.state.loading && <Spinner />}
                 <div className="row my-3">
-                    <div className="col-md-4">
-                        <NewsItem title="29 Best Black Friday Gaming Deals (2024), Consoles and Games" description="A Nintendo Switch bundle for $225? A PS5 Slim for more than $100 off? These Black Friday gaming deals are bonkers." imageUrl="https://media.wired.com/photos/6744d0d61e9fed2ec33b4229/191:100/w_1280,c_limit/black-friday-gaming-deals.png" 
-                        newsUrl="https://www.wired.com/story/black-friday-gaming-deals-2024/"/>
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc" imageUrl="https://media.wired.com/photos/67476900e61d335fbb0f07b5/191:100/w_1280,c_limit/cyber-monday-laptop-deals.png"/>
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc" imageUrl="https://gizmodo.com/app/uploads/2024/11/asus-rog-strix-g16.jpg"/>
-                    </div>
+                    {!this.state.loading && this.state.articles.map((element) => {
+                        return <div className="col-md-4" key={element.url}>
+                            <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url} />
+                        </div>
+                    })
+                    }
                 </div>
-                <div className="row my-5">
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc"/>
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc"/>
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc"/>
-                    </div>
-                </div>
-                <div className="row my-5">
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc"/>
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc"/>
-                    </div>
-                    <div className="col-md-4">
-                        <NewsItem title="myTitle" description="myDesc"/>
-                    </div>
+                <div className="container d-flex justify-content-between">
+                    <button disabled={this.state.page <= 1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous</button>
+                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)}type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
                 </div>
             </div>
         )
