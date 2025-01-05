@@ -33,19 +33,20 @@ export default function TextForm(props) {
 
     const clearValue = () => {
         setText('');
+        props.showAlert("Field Cleared", "success");
     }
     
 
     return (
         <>
-            <div className="container" style={{ color: props.mode === 'dark' ? 'white' : '#03012b' }}>
+            <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : '#03012b' }}>
                 <h1>{props.heading}</h1>
                 <div className="mb-1">
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" style={{ backgroundColor: props.mode === 'light' ? 'dark' : 'light', color: props.mode === 'light' ? 'dark' : 'light' }}></textarea>
                 </div>
-                <button className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'}`} onClick={handleUpClick} >Convert to Uppercase</button>
-                <button className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'} mx-2`} onClick={handleLowClick} >Convert to Lowercase</button>
-                <button className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'}`} onClick={clearValue} >Clear Field</button>
+                <button disabled ={text.length===0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'}`} onClick={handleUpClick} >Convert to Uppercase</button>
+                <button disabled ={text.length===0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'} mx-2`} onClick={handleLowClick} >Convert to Lowercase</button>
+                <button disabled ={text.length===0} className={`btn btn-${props.mode === 'light' ? 'dark' : 'light'}`} onClick={clearValue} >Clear Field</button>
             </div>
             <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : '#03012b' }}>
                 <h2>Your Text Summary</h2>

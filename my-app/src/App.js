@@ -25,7 +25,7 @@ function App() {
     })
     setTimeout(() => {
       setAlert(null)
-    }, 2000);
+    }, 1500);
   }
 
   const toggleModeBlue = () => {
