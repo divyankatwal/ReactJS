@@ -64,8 +64,8 @@ const News = (props) => {
     };
 
     return (
-        <div className="container my-3">
-            <h1 className='text-center my-7'>NewsFoxy - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
+        <div className="container">
+            <h1 className='text-center' style={{marginTop : "80px"}}>NewsFoxy - Top {capitalizeFirstLetter(props.category)} Headlines</h1>
             {loading && <Spinner />}
             <InfiniteScroll
                 dataLength={articles.length}
@@ -74,7 +74,7 @@ const News = (props) => {
                 loader={loading && <Spinner />}
             ></InfiniteScroll>
             <div className="container">
-                <div className="row my-5">
+                <div className="row my-4">
                     {articles.map((element, index) => {
                         return <div className="col-md-4" key={index}>
                             <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
