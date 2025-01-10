@@ -3,8 +3,7 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from 'react'
 import Alert from './components/Alert';
-import About from './components/About';
-import Products from './components/Products';
+
 
 import {
   BrowserRouter as Router,
@@ -56,12 +55,10 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar title="ComputerChacha" mode={mode} toggleModeBlue={toggleModeBlue} toggleModeGreen={toggleModeGreen} toggleModeRed={toggleModeRed} toggleModeLight={toggleModeLight} />
+        <Navbar title="Text Analyzer" mode={mode} toggleModeBlue={toggleModeBlue} toggleModeGreen={toggleModeGreen} toggleModeRed={toggleModeRed} toggleModeLight={toggleModeLight} />
         <Alert alert={alert} />
         <div className="container">
           <Routes>
-            <Route exact path="/about" element={<About mode={mode}/>} />
-            <Route exact path="/products" element={<Products />} />
             <Route exact path="/" element={<TextForm heading="Enter your text here to analyze" mode={mode} showAlert={showAlert} />} />
           </Routes>
         </div>

@@ -22,12 +22,6 @@ export default function Navbar(props) {
                     <li className="nav-item active">
                         <Link className="nav-link acive" aria-current="page" to="/">Home</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/about">About</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/products">Products</Link>
-                    </li>
                 </ul>
                 <div className={`form-check form-check-inline text-${props.mode === 'light' ? 'dark' : 'light'} mx-2`}>
                     <input className="form-check-input" onClick={props.toggleModeBlue} type="radio" id="DarkMode1" name="DarkMode" value="option1"/>
